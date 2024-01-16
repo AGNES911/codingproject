@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+        <link rel="stylesheet" href="src/styles.css" />
+        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
+
+    <title>Weather App</title>
+  </head>
+    <div class="weather-app">
+    <body>
+      <form class="search-form"id="search-form">
+        <input
+          type="Search"
+          placeholder="Enter a city"
+          required
+          class="search-button"
+          id="search-button"
+        />
+        <input type="submit" value="Search" required class="submit-button" />
+      </form>
+      <header>
+        <h1 class="weather-app-city" id="city">
+          
+        </h1>
+      </header>
+      <main>
+        <div class="notes">
+          <p>
+            <span id="time" ></span> <span id="description" ></span><br />
+            Humidity <strong id="humidity"></strong> Wind <strong id="speed"></strong>
+          </p>
+        </div>
+        <div class="temperature">
+          <div id="icon">
+            
+           </div>
+          </span>
+          <span class="temp" id="temp"></span>
+          <span class="celcius">°C</span>
+        </div>
+      </main>
+      <footer>
+        This project was coded by Agnes Ochieng and is on GitHub and hosted by
+        Netlify.
+      </footer>
+    </div>
+    </body>
+  <script src ="src/index.js"></script>
+</html>
