@@ -51,14 +51,14 @@ function handlesearchsubmit(event) {
 let searchformElement = document.querySelector("#search-form");
 searchformElement.addEventListener("submit", handlesearchsubmit);
 
-searchCity("Lisbon");
-function getForecast() {
+function getForecast(city) {
   let apiKey = "8400d24aba831a8003c9oa48b04ft300";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metrics`;
   axios(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
   let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
   let forecastHTML = "";
@@ -72,7 +72,7 @@ function displayForecast(response) {
           src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
           width="36px"/>
         </div>
-        <div class="Temperatuure-max-min">
+        <div class="Temperature-max-min">
         <span class="temp-max">18°</span>  <span class="temp-min">12°</span>
         </div>
         </div>
@@ -82,3 +82,4 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 displayForecast();
+searchCity("Lisbon");
