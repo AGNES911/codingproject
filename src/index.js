@@ -52,3 +52,16 @@ let searchformElement = document.querySelector("#search-form");
 searchformElement.addEventListener("submit", handlesearchsubmit);
 
 searchCity("Lisbon");
+
+let forecast = document.querySelector("#forecast");
+forecast.innerHTML = `<div class="forecast-day">Sunday</div>
+        <div class="icon">
+            <img
+          src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
+          width="36px"/>
+        </div>
+        <div class="Temperatuure-max-min">
+        <span class="temp-max">18</span>  <span class="temp-min">12</span>
+        </div>
+        </div>
+        `;
