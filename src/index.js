@@ -13,7 +13,7 @@ function updatewaether(response) {
   timeElement.innerHTML = formatDate(date);
   let iconElement = document.querySelector("#icon");
   iconElement.innerHTML = `<img src= "${response.data.condition.icon_url}"class="emoji">`;
-  console.log(response.data);
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -52,16 +52,33 @@ let searchformElement = document.querySelector("#search-form");
 searchformElement.addEventListener("submit", handlesearchsubmit);
 
 searchCity("Lisbon");
+function getForecast() {
+  let apiKey = "8400d24aba831a8003c9oa48b04ft300";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metrics`;
+  axios(apiUrl).then(displayForecast);
+}
 
-let forecast = document.querySelector("#forecast");
-forecast.innerHTML = `<div class="forecast-day">Sunday</div>
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+  let forecastHTML = "";
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="row">
+      <div class="forecast-day">${day}</div>
         <div class="icon">
             <img
           src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
           width="36px"/>
         </div>
         <div class="Temperatuure-max-min">
-        <span class="temp-max">18</span>  <span class="temp-min">12</span>
+        <span class="temp-max">18°</span>  <span class="temp-min">12°</span>
+        </div>
         </div>
         </div>
         `;
+  });
+  forecastElement.innerHTML = forecastHTML;
+}
+displayForecast();

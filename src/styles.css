@@ -57,11 +57,15 @@ h1 {
 }
 .Temperatuure-max-min {
   margin-top: -15px;
+  display: flex;
 }
 .forecast-day {
   margin-bottom: -10px;
+  display: flex;
 }
 .weather-forecast {
-  align-items: center;
-  display: inline-block;
+  text-align: center;
+  margin: 20px;
+  justify-content: space-between;
+  display: flex;
 }
