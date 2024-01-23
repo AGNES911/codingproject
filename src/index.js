@@ -50,30 +50,40 @@ function handlesearchsubmit(event) {
 
 let searchformElement = document.querySelector("#search-form");
 searchformElement.addEventListener("submit", handlesearchsubmit);
+searchCity("Lisbon");
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
 function getForecast(city) {
   let apiKey = "8400d24aba831a8003c9oa48b04ft300";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metrics`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
   axios(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
   console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+
   let forecastHTML = "";
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHTML =
       forecastHTML +
       `<div class="row">
-      <div class="forecast-day">${day}</div>
+      <div class="forecast-day">${formatDay(day.time)}</div>
         <div class="icon">
             <img
-          src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
-          width="36px"/>
+          src="${day.condition.icon_url}" class="icon"/>
         </div>
         <div class="Temperature-max-min">
-        <span class="temp-max">18°</span>  <span class="temp-min">12°</span>
+        <span class="temp-max">${Math.round(
+          day.temperature.maximum
+        )}°</span>  <span class="temp-min">${Math.round(
+        day.temperature.minimum
+      )}°</span>
         </div>
         </div>
         </div>
@@ -82,4 +92,3 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 displayForecast();
-searchCity("Lisbon");
