@@ -60,10 +60,12 @@ h1 {
 .Temperatuure-max-min {
   margin-top: -10px;
   display: flex;
+  justify-content: space-between;
 }
 .forecast-day {
-  margin-bottom: -10px;
+  margin-bottom: -15px;
   display: flex;
+  justify-content: space-between;
 }
 .weather-forecast {
   text-align: center;
@@ -72,5 +74,6 @@ h1 {
   display: flex;
 }
 .icon {
-  width: 80%;
+  width: 100%;
+  justify-content: space-between;
 }
