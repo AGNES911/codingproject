@@ -71,3 +71,6 @@ h1 {
   justify-content: space-between;
   display: flex;
 }
+.icon {
+  width: 100%;
+}
