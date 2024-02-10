@@ -69,7 +69,7 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "";
-  response.data.daily.forEach(function (day) {
+  response.data.daily.forEach(function (dayv87b) {
     forecastHTML =
       forecastHTML +
       `<div class="row">
